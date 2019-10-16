@@ -58,12 +58,13 @@ public class MainActivity extends AppCompatActivity {
 
         Food newFood;
 
-        foodRepository.getFoods().observe(this, new Observer<List<Food>>() {
+        /*foodRepository.getFoods().observe(this, new Observer<List<Food>>() {
             @Override
             public void onChanged(@Nullable final List<Food> foods) {
                 Log.i("nice", foods.get(0).name);
             }
-        });
+
+        });*/
 
 
         // testing API recipe search
