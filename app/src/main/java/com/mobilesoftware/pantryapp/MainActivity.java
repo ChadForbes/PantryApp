@@ -1,5 +1,6 @@
 package com.mobilesoftware.pantryapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -11,6 +12,7 @@ import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.Observer;
 import androidx.viewpager.widget.ViewPager;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 import com.mobilesoftware.pantryapp.ui.main.MyPantryFragment;
 import com.mobilesoftware.pantryapp.ui.main.ViewPagerAdapter;
@@ -57,16 +59,26 @@ public class MainActivity extends AppCompatActivity {
         final LifecycleOwner owner = this;
 
         Food newFood;
-
+ 
         foodRepository.getFoods().observe(this, new Observer<List<Food>>() {
             @Override
             public void onChanged(@Nullable final List<Food> foods) {
                 Log.i("nice", foods.get(0).name);
             }
         });
+
+
+
+        final FloatingActionButton createButton = (FloatingActionButton) findViewById(R.id.createButton);
+        final Intent createIntent = new Intent(this, CreateItemActivity.class);
+
+        createButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                createIntent.putExtra("mode", "create");
+                startActivity(createIntent);
+            }
+        });
+
     }
-
-
-
-
 }

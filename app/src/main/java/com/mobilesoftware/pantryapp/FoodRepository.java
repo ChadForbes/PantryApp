@@ -3,10 +3,15 @@ package com.mobilesoftware.pantryapp;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.AsyncTask;
+import android.os.Build;
 
+import androidx.annotation.RequiresApi;
 import androidx.lifecycle.LiveData;
 import androidx.room.Room;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 public class FoodRepository {
@@ -19,12 +24,16 @@ public class FoodRepository {
                 .build();
     }
 
-    public void insertFood(String name, int amount, String amountType, String aliases) {
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public void insertFood(String name, int amount, String amountType, String aliases, Date expiryDate, boolean searchable) {
         Food food = new Food();
         food.name = name;
         food.amount = amount;
         food.amountType = amountType;
         food.aliases = aliases;
+        food.createdAt = LocalDateTime.now().toString();
+        food.expiryDate = expiryDate.toString();
+        food.searchable = searchable;
         insertFood(food);
     }
 
