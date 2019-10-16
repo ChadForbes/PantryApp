@@ -5,10 +5,42 @@
     android:layout_height="match_parent"
     tools:context=".RecipeFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <TableLayout
+        android:id="@+id/layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="match_parent">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <EditText
+                android:id="@+id/editText_search"
+                android:layout_width="307dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="Name" />
+
+            <Button
+                android:id="@+id/button_search"
+                android:layout_width="102dp"
+                android:layout_height="wrap_content"
+                android:text="Search" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <CheckBox
+                android:id="@+id/checkBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CheckBox" />
+        </TableRow>
+
+    </TableLayout>
 
 </FrameLayout>

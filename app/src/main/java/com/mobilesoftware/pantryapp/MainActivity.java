@@ -64,45 +64,6 @@ public class MainActivity extends AppCompatActivity {
                 Log.i("nice", foods.get(0).name);
             }
         });
-
-
-        // testing API recipe search
-        final Button APISearchButton = findViewById(R.id.button_testAPI);
-        APISearchButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                OkHttpClient client = new OkHttpClient();
-                String url = "https://www.food2fork.com/api/search?key=1e57f850de5ad1ed723a26fdb35ca897&q=chicken&count=1";
-                Request request = new Request.Builder()
-                        .url(url)
-                        .build();
-                client.newCall(request).enqueue(new Callback() {
-                    @Override
-                    public void onFailure(Call call, IOException e) {
-                        e.printStackTrace();
-                    }
-
-                    @Override
-                    public void onResponse(Call call, Response response) throws IOException {
-                        if(response.isSuccessful()) {
-                            final String myResponse = response.body().string();
-
-                            MainActivity.this.runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    System.out.println(myResponse);
-                                }
-                            });
-                        }
-                    }
-                });
-
-
-            }
-
-        });
-
     }
 
 
