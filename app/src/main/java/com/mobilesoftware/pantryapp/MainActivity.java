@@ -1,49 +1,28 @@
 package com.mobilesoftware.pantryapp;
 
-import android.content.Context;
 import android.os.Bundle;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-import com.google.android.material.tabs.TabLayout;
-
-import androidx.annotation.Nullable;
-import androidx.lifecycle.LifecycleOwner;
-import androidx.lifecycle.Observer;
-import androidx.room.Room;
-import androidx.viewpager.widget.ViewPager;
-import androidx.appcompat.app.AppCompatActivity;
-
-<<<<<<< HEAD
-=======
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
->>>>>>> master
 import android.view.View;
 import android.widget.Button;
 
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.LifecycleOwner;
+import androidx.lifecycle.Observer;
+import androidx.viewpager.widget.ViewPager;
+
+import com.google.android.material.tabs.TabLayout;
 import com.mobilesoftware.pantryapp.ui.main.MyPantryFragment;
 import com.mobilesoftware.pantryapp.ui.main.ViewPagerAdapter;
 
-
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.ProtocolException;
-import java.net.URL;
-
-import javax.net.ssl.HttpsURLConnection;
+import java.util.List;
 
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
-
-import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -57,18 +36,16 @@ public class MainActivity extends AppCompatActivity {
         foodRepository = new FoodRepository(getApplicationContext());
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-<<<<<<< HEAD
 
         tabLayout = findViewById(R.id.tabs);
         viewPager = findViewById(R.id.view_pager);
         adapter = new ViewPagerAdapter(getSupportFragmentManager());
 
         adapter.AddFragment(new MyPantryFragment(), "My Pantry");
+        adapter.AddFragment(new RecipeFragment(), "Recipes");
 
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
-
-=======
 
         Food food = new Food();
         food.name = "Salmon";
@@ -88,11 +65,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(final View view) {
-            }
-        });
 
         // testing API recipe search
         final Button APISearchButton = findViewById(R.id.button_testAPI);
@@ -130,7 +102,6 @@ public class MainActivity extends AppCompatActivity {
             }
 
         });
->>>>>>> master
 
     }
 
