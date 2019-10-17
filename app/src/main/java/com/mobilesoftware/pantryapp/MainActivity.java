@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     TabLayout tabLayout;
     ViewPager viewPager;
     ViewPagerAdapter adapter;
+    boolean visible = true;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         foodRepository = new FoodRepository(getApplicationContext());
@@ -49,21 +50,12 @@ public class MainActivity extends AppCompatActivity {
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
 
-        Food food = new Food();
-        food.name = "Salmon";
-        food.aliases = "";
-        food.amount = 16;
-        food.amountType = "lb";
-
-        foodRepository.insertFood(food);
-        final LifecycleOwner owner = this;
-
         Food newFood;
 
         foodRepository.getFoods().observe(this, new Observer<List<Food>>() {
             @Override
             public void onChanged(@Nullable final List<Food> foods) {
-                Log.i("nice", foods.get(0).name);
+                Log.i("nice", foods.toString());
             }
         });
 
@@ -110,7 +102,34 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 createIntent.putExtra("mode", "create");
+                //createIntent.putExtra("mode", "edit");
+                //createIntent.putExtra("foodId", 2);
                 startActivity(createIntent);
+            }
+        });
+
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                if(visible) {
+                    createButton.hide();
+                    visible = false;
+                    return;
+                }
+
+                createButton.show();
+                visible = true;
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
             }
         });
 
