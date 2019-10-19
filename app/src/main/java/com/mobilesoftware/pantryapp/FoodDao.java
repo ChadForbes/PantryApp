@@ -23,6 +23,9 @@ public interface FoodDao {
     @Query("SELECT * FROM Food WHERE name LIKE :foodName")
     LiveData<List<Food>> getFoodByName(String foodName);
 
+    @Query("SELECT * FROM Food WHERE searchable")
+    LiveData<List<Food>> getFoodSearchable();
+
     @Update
     void updateFood(Food food);
 
