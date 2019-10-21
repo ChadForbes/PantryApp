@@ -1,6 +1,7 @@
 package com.mobilesoftware.pantryapp.ui.main;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,10 +16,20 @@ import com.mobilesoftware.pantryapp.R;
 import java.util.List;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder> {
-        Context mContext;
-        List<Food> mData;
+    private Context mContext;
+    private List<Food> mData;
+    private OnItemClickListener mListener;
 
-    public RecyclerViewAdapter(Context mContext, List<Food> mData){
+    public interface OnItemClickListener {
+        void onItemClick(int position);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener){
+        mListener = listener;
+
+    }
+
+    public RecyclerViewAdapter(Context mContext, List<Food> mData) {
         this.mContext = mContext;
         this.mData = mData;
     }
@@ -28,8 +39,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v;
         v = LayoutInflater.from(mContext).inflate(R.layout.cardview_item, parent, false);
-        MyViewHolder viewHolder = new MyViewHolder(v);
-        return viewHolder;
+        return new MyViewHolder(v, mListener);
     }
 
     @Override
@@ -40,20 +50,42 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public int getItemCount() {
-        return 0;
+        return mData.size();
     }
 
-    public static class MyViewHolder extends RecyclerView.ViewHolder{
+    public void clear(){
+        mData.clear();
+        notifyDataSetChanged();
+    }
+
+    public  void addAll(List<Food> mData){
+        this.mData.addAll(mData);
+        notifyDataSetChanged();
+    }
+
+    public static class MyViewHolder extends RecyclerView.ViewHolder {
 
         private TextView tv_name;
         private TextView tv_count;
 
-        public MyViewHolder(View itemView){
+        public MyViewHolder(View itemView, final OnItemClickListener listener) {
             super(itemView);
 
             tv_name = (TextView) itemView.findViewById(R.id.nametv);
             tv_count = (TextView) itemView.findViewById(R.id.counttv);
 
+            itemView.setOnClickListener(new View.OnClickListener(){
+
+                @Override
+                public void onClick(View view) {
+                    if(listener != null){
+                        int position = getAdapterPosition();
+                        if (position != RecyclerView.NO_POSITION){
+                            listener.onItemClick(position);
+                        }
+                    }
+                }
+            });
 
         }
     }
