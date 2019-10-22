@@ -58,8 +58,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         notifyDataSetChanged();
     }
 
-    public  void addAll(List<Food> mData){
-        this.mData.addAll(mData);
+    public  void updatelst(List<Food> mData){
+        this.mData = mData;
         notifyDataSetChanged();
     }
 
