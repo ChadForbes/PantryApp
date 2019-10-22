@@ -90,4 +90,9 @@ public class FoodRepository {
     public LiveData<List<Food>> getFoods() {
         return foodDatabase.foodDao().getAllFoods();
     }
+
+    public LiveData<List<Food>> getSearchableFoods() {
+        return foodDatabase.foodDao().getFoodSearchable();
+    }
+
 }

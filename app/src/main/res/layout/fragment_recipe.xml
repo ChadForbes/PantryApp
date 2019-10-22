@@ -3,12 +3,64 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_rowSpan="0"
+    android:layout_columnSpan="1"
+    android:layout_span="2"
     tools:context=".RecipeFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <TableLayout
+        android:id="@+id/layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="match_parent">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <EditText
+                android:id="@+id/editText_search"
+                android:layout_width="326dp"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName" />
+
+            <Button
+                android:id="@+id/button_search"
+                android:layout_height="wrap_content"
+                android:layout_span="0"
+                android:text="Search" />
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/myAddTo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ScrollView
+                android:layout_width="312dp"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:id="@+id/linAddTo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <CheckBox
+                        android:id="@+id/checkBox3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="CheckBox" />
+
+                    <CheckBox
+                        android:id="@+id/checkBox2"
+                        android:layout_width="157dp"
+                        android:layout_height="match_parent"
+                        android:text="CheckBox" />
+                </LinearLayout>
+            </ScrollView>
+        </TableRow>
+
+    </TableLayout>
 
 </FrameLayout>

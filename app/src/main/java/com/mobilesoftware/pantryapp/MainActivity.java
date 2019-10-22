@@ -49,13 +49,43 @@ public class MainActivity extends AppCompatActivity {
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
 
-        Food food = new Food();
-        food.name = "Salmon";
-        food.aliases = "";
-        food.amount = 16;
-        food.amountType = "lb";
+//        Food food = new Food();
+//        food.name = "Beef";
+//        food.aliases = "";
+//        food.amount = 16;
+//        food.amountType = "lb";
+//        food.searchable = true;
+//
+//        foodRepository.insertFood(food);
+//
+//        Food food2 = new Food();
+//        food2.name = "Chicken";
+//        food2.aliases = "";
+//        food2.amount = 16;
+//        food2.amountType = "lb";
+//        food2.searchable = true;
+//
+//        foodRepository.insertFood(food2);
+//
+//        Food food3 = new Food();
+//        food3.name = "Spinach";
+//        food3.aliases = "";
+//        food3.amount = 16;
+//        food3.amountType = "lb";
+//        food3.searchable = true;
+//
+//        foodRepository.insertFood(food3);
+//
+//        Food food4 = new Food();
+//        food4.name = "Honey";
+//        food4.aliases = "";
+//        food4.amount = 16;
+//        food4.amountType = "lb";
+//        food4.searchable = true;
 
-        foodRepository.insertFood(food);
+//        foodRepository.insertFood(food4);
+
+
         final LifecycleOwner owner = this;
 
         Food newFood;
@@ -69,40 +99,6 @@ public class MainActivity extends AppCompatActivity {
         });*/
 
 
-        // testing API recipe search
-        final Button APISearchButton = findViewById(R.id.button_testAPI);
-        APISearchButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                OkHttpClient client = new OkHttpClient();
-                String url = "https://www.food2fork.com/api/search?key=1e57f850de5ad1ed723a26fdb35ca897&q=chicken&count=1";
-                Request request = new Request.Builder()
-                        .url(url)
-                        .build();
-                client.newCall(request).enqueue(new Callback() {
-                    @Override
-                    public void onFailure(Call call, IOException e) {
-                        e.printStackTrace();
-                    }
-
-                    @Override
-                    public void onResponse(Call call, Response response) throws IOException {
-                        if(response.isSuccessful()) {
-                            final String myResponse = response.body().string();
-
-                            MainActivity.this.runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    System.out.println(myResponse);
-                                }
-                            });
-                        }
-                    }
-                });
-            }
-
-        });
 
         final FloatingActionButton createButton = (FloatingActionButton) findViewById(R.id.createButton);
         final Intent createIntent = new Intent(this, CreateItemActivity.class);
