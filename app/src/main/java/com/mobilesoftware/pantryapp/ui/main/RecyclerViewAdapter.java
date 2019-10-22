@@ -46,6 +46,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         holder.tv_name.setText(mData.get(position).name);
         holder.tv_count.setText(Float.toString(mData.get(position).amount));
+        holder.tv_unit.setText(mData.get(position).amountType);
     }
 
     @Override
@@ -67,12 +68,14 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         private TextView tv_name;
         private TextView tv_count;
+        private TextView tv_unit;
 
         public MyViewHolder(View itemView, final OnItemClickListener listener) {
             super(itemView);
 
             tv_name = (TextView) itemView.findViewById(R.id.nametv);
             tv_count = (TextView) itemView.findViewById(R.id.counttv);
+            tv_unit = (TextView) itemView.findViewById(R.id.unittv);
 
             itemView.setOnClickListener(new View.OnClickListener(){
 

@@ -2,29 +2,16 @@ package com.mobilesoftware.pantryapp;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.LifecycleOwner;
-import androidx.lifecycle.Observer;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 import com.mobilesoftware.pantryapp.ui.main.MyPantryFragment;
 import com.mobilesoftware.pantryapp.ui.main.ViewPagerAdapter;
-
-import java.io.IOException;
-import java.util.List;
-
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -33,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
     TabLayout tabLayout;
     ViewPager viewPager;
     ViewPagerAdapter adapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         foodRepository = new FoodRepository(getApplicationContext());
@@ -97,7 +85,6 @@ public class MainActivity extends AppCompatActivity {
             }
 
         });*/
-
 
 
         final FloatingActionButton createButton = (FloatingActionButton) findViewById(R.id.createButton);
