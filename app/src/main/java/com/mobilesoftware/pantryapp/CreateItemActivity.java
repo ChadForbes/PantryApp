@@ -58,21 +58,18 @@ public class CreateItemActivity extends AppCompatActivity {
             foodRepository.getFood(id).observe(this, new Observer<Food>() {
                 @Override
                 public void onChanged(@NonNull final Food foods) {
-
-                    Food food = new Food();
-                    food = foods;
-
-                    nameET.setText(food.name);
-                    expirET.setText(food.expiryDate);
-                    amtET.setText(Float.toString(food.amount));
-                    unitET.setText(food.amountType);
-                    aliasET.setText(food.aliases);
-                    addsearch.setChecked(food.searchable);
+                    if (foods != null) {
+                        nameET.setText(foods.name);
+                        expirET.setText(foods.expiryDate);
+                        amtET.setText(Float.toString(foods.amount));
+                        unitET.setText(foods.amountType);
+                        aliasET.setText(foods.aliases);
+                        addsearch.setChecked(foods.searchable);
+                    }
                 }
             });
 
 
-            /** currently not setup to saving to database*/
             // Edit item
             createbtn.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -106,6 +103,7 @@ public class CreateItemActivity extends AppCompatActivity {
                     food.amountType = unitET.getText().toString();
                     food.aliases = aliasET.getText().toString();
                     food.searchable = addsearch.isChecked();
+                    broadcast(true);
                     foodRepository.deleteFood(food);
                     CreateItemActivity.this.finish();
                 }
