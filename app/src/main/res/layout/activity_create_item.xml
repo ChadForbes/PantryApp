@@ -7,7 +7,7 @@
     tools:context=".CreateItemActivity">
 
     <TextView
-        android:id="@+id/createItemText"
+        android:id="@+id/titletv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/create_item_text"
@@ -27,12 +27,12 @@
         android:layout_marginRight="53dp"
         android:text="@string/aliases_text"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        app:layout_constraintEnd_toStartOf="@+id/amountType"
+        app:layout_constraintEnd_toStartOf="@+id/unitet"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/amountType" />
+        app:layout_constraintTop_toBottomOf="@+id/unitet" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/submitbtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
@@ -41,10 +41,10 @@
         android:text="@string/create_text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/button3" />
+        app:layout_constraintStart_toEndOf="@+id/deletebtn" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/cancelbtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="19dp"
@@ -52,12 +52,12 @@
         android:layout_marginBottom="16dp"
         android:text="@android:string/cancel"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/button3"
+        app:layout_constraintEnd_toStartOf="@+id/deletebtn"
         app:layout_constraintHorizontal_chainStyle="spread_inside"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/deletebtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="4dp"
@@ -65,50 +65,50 @@
         android:layout_marginBottom="16dp"
         android:text="@string/delete_text"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/button"
-        app:layout_constraintStart_toEndOf="@+id/button2" />
+        app:layout_constraintEnd_toStartOf="@+id/submitbtn"
+        app:layout_constraintStart_toEndOf="@+id/cancelbtn" />
 
     <EditText
-        android:id="@+id/nameEdit"
+        android:id="@+id/nameet"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="1dp"
         android:layout_marginLeft="1dp"
         android:layout_marginBottom="34dp"
         android:ems="10"
+        android:hint="Name"
         android:inputType="textAutoComplete"
-        android:text="Name"
-        app:layout_constraintBottom_toTopOf="@+id/expiryEdit"
-        app:layout_constraintStart_toStartOf="@+id/expiryEdit" />
+        app:layout_constraintBottom_toTopOf="@+id/expiryet"
+        app:layout_constraintStart_toStartOf="@+id/expiryet" />
 
     <EditText
-        android:id="@+id/amountEdit"
+        android:id="@+id/amountet"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="17dp"
         android:ems="10"
+        android:hint="@string/amount_text"
         android:inputType="number"
-        android:text="@string/amount_text"
-        app:layout_constraintBottom_toTopOf="@+id/amountType"
-        app:layout_constraintEnd_toStartOf="@+id/amountType"
-        app:layout_constraintStart_toStartOf="@+id/amountType" />
+        app:layout_constraintBottom_toTopOf="@+id/unitet"
+        app:layout_constraintEnd_toStartOf="@+id/unitet"
+        app:layout_constraintStart_toStartOf="@+id/unitet" />
 
     <EditText
-        android:id="@+id/expiryEdit"
+        android:id="@+id/expiryet"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="1dp"
         android:layout_marginRight="1dp"
         android:layout_marginBottom="39dp"
         android:ems="10"
+        android:hint="@string/expiry_text"
         android:inputType="textPersonName"
-        android:text="@string/expiry_text"
-        app:layout_constraintBottom_toTopOf="@+id/amountEdit"
-        app:layout_constraintEnd_toEndOf="@+id/amountType"
+        app:layout_constraintBottom_toTopOf="@+id/amountet"
+        app:layout_constraintEnd_toEndOf="@+id/unitet"
         app:layout_constraintStart_toStartOf="@+id/textView6" />
 
     <CheckBox
-        android:id="@+id/searchButtonToggle"
+        android:id="@+id/searchbtntog"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
@@ -116,11 +116,11 @@
         android:layout_marginBottom="22dp"
         android:text="@string/add_to_search_text"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        app:layout_constraintBottom_toTopOf="@+id/button2"
-        app:layout_constraintStart_toStartOf="@+id/button2" />
+        app:layout_constraintBottom_toTopOf="@+id/cancelbtn"
+        app:layout_constraintStart_toStartOf="@+id/cancelbtn" />
 
     <EditText
-        android:id="@+id/aliasesText"
+        android:id="@+id/aliaseset"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="2dp"
@@ -134,14 +134,14 @@
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
     <EditText
-        android:id="@+id/amountType"
+        android:id="@+id/unitet"
         android:layout_width="103dp"
         android:layout_height="43dp"
         android:layout_marginEnd="143dp"
         android:layout_marginRight="143dp"
         android:ems="10"
+        android:hint="@string/amount_unit"
         android:inputType="text"
-        android:text="@string/amount_unit"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
