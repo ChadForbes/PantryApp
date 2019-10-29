@@ -1,0 +1,170 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:id="@+id/page_menu_ek1"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp">
+
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="148dp"
+            android:layout_height="178dp"
+            android:layout_marginStart="216dp"
+            android:layout_marginLeft="216dp"
+            android:layout_marginTop="466dp"
+            app:cardCornerRadius="25dp"
+            app:strokeColor="#000000"
+            app:strokeWidth="1dp">
+
+            <ImageView
+                android:layout_width="93dp"
+                android:layout_height="93dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="25dp"
+                android:src="@drawable/map_128px" />
+
+            <TextView
+                android:layout_width="51dp"
+                android:layout_height="58dp"
+                android:layout_gravity="center_horizontal|center"
+                android:layout_marginTop="50dp"
+                android:fontFamily="Roboto"
+                android:gravity="center"
+                android:text="@string/find_store_string"
+                android:textColor="@color/shopping_list_color"
+                android:textSize="20sp" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="148dp"
+            android:layout_height="178dp"
+            android:layout_marginStart="46dp"
+            android:layout_marginLeft="46dp"
+            android:layout_marginTop="466dp"
+            app:cardCornerRadius="25dp"
+            app:strokeColor="#000000"
+            app:strokeWidth="1dp">
+
+            <TextView
+                android:id="@+id/shopping_list"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|center"
+                android:layout_marginTop="50dp"
+                android:fontFamily="Roboto"
+                android:gravity="center"
+                android:text="@string/shopping_list_string"
+                android:textColor="@color/shopping_list_color"
+                android:textSize="20sp" />
+
+            <ImageView
+                android:layout_width="93dp"
+                android:layout_height="93dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="25dp"
+                android:src="@drawable/basket_128px" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="148dp"
+            android:layout_height="178dp"
+            android:layout_marginStart="216dp"
+            android:layout_marginLeft="216dp"
+            android:layout_marginTop="266dp"
+            app:cardCornerRadius="25dp"
+            app:strokeColor="#000000"
+            app:strokeWidth="1dp">
+
+            <ImageView
+                android:layout_width="93dp"
+                android:layout_height="93dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="25dp"
+                android:src="@drawable/recipebook_128px" />
+
+            <TextView
+                android:id="@+id/recipes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="50dp"
+                android:fontFamily="Roboto"
+                android:text="@string/recipes_string"
+                android:textColor="@color/shopping_list_color"
+                android:textSize="20sp" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="148dp"
+            android:layout_height="178dp"
+            android:layout_marginStart="46dp"
+            android:layout_marginLeft="46dp"
+            android:layout_marginTop="266dp"
+            app:cardCornerRadius="25dp"
+            app:strokeColor="#000000"
+            app:strokeWidth="1dp">
+
+            <ImageView
+                android:id="@+id/kitchen_128px"
+                android:layout_width="93dp"
+                android:layout_height="93dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="25dp"
+                android:src="@drawable/kitchen_128px" />
+
+            <TextView
+                android:id="@+id/pantry"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="50dp"
+                android:fontFamily="Roboto"
+                android:text="@string/pantry_string"
+                android:textColor="@color/shopping_list_color"
+                android:textSize="20sp" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <ImageView
+            android:id="@+id/path_1"
+            android:layout_width="411dp"
+            android:layout_height="180dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="0dp"
+            android:contentDescription="path_1"
+            android:src="@drawable/path_1" />
+
+        <TextView
+            android:id="@+id/pantry_app"
+            android:layout_width="103dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="158dp"
+            android:layout_marginTop="133dp"
+            android:fontFamily="Roboto"
+            android:text="@string/pantry_app"
+            android:textColor="@color/pantry_app_color"
+            android:textSize="20sp" />
+
+        <ImageView
+            android:id="@+id/food_512px"
+            android:layout_width="105dp"
+            android:layout_height="105dp"
+            android:layout_marginStart="154dp"
+            android:layout_marginLeft="154dp"
+            android:layout_marginTop="22dp"
+            android:contentDescription="food_512px"
+            android:src="@drawable/food_512px" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

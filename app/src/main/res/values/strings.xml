@@ -17,4 +17,10 @@
     <string name="create_text">Create</string>
     <string name="close_text">Close</string>
     <string name="delete_text">Delete</string>
+    <string name="recipes_string">Recipes</string>
+    <string name="pantry_string">Pantry</string>
+    <string name="find_store_string">Find Store</string>
+    <string name="shopping_list_string">Shopping List</string>
+    <string name="pantry_app">Pantry App</string>
+
 </resources>
