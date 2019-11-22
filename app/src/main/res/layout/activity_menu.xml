@@ -1,8 +1,45 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/path_1" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:layout_marginTop="16dp"
+                app:srcCompat="@drawable/food_512px" />
+
+            <TextView
+                android:id="@+id/pantry_app"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:fontFamily="Roboto"
+                android:text="@string/pantry_app"
+                android:textColor="@color/pantry_app_color"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
 
     <RelativeLayout
         android:id="@+id/page_menu_ek1"
@@ -134,37 +171,6 @@
 
         </com.google.android.material.card.MaterialCardView>
 
-        <ImageView
-            android:id="@+id/path_1"
-            android:layout_width="411dp"
-            android:layout_height="180dp"
-            android:layout_marginStart="0dp"
-            android:layout_marginLeft="0dp"
-            android:layout_marginTop="0dp"
-            android:contentDescription="path_1"
-            android:src="@drawable/path_1" />
-
-        <TextView
-            android:id="@+id/pantry_app"
-            android:layout_width="103dp"
-            android:layout_height="30dp"
-            android:layout_marginLeft="158dp"
-            android:layout_marginTop="133dp"
-            android:fontFamily="Roboto"
-            android:text="@string/pantry_app"
-            android:textColor="@color/pantry_app_color"
-            android:textSize="20sp" />
-
-        <ImageView
-            android:id="@+id/food_512px"
-            android:layout_width="105dp"
-            android:layout_height="105dp"
-            android:layout_marginStart="154dp"
-            android:layout_marginLeft="154dp"
-            android:layout_marginTop="22dp"
-            android:contentDescription="food_512px"
-            android:src="@drawable/food_512px" />
-
     </RelativeLayout>
 
-</RelativeLayout>
+</LinearLayout>

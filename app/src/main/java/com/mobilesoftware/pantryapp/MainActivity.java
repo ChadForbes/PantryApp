@@ -25,9 +25,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         foodRepository = new FoodRepository(getApplicationContext());
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_menu);
 
-        tabLayout = findViewById(R.id.tabs);
+        /*tabLayout = findViewById(R.id.tabs);
         viewPager = findViewById(R.id.view_pager);
         adapter = new ViewPagerAdapter(getSupportFragmentManager());
 
@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
                 Log.i("nice", foods.get(0).name);
             }
 
-        });*/
+        });
 
 
         final FloatingActionButton createButton = (FloatingActionButton) findViewById(R.id.createButton);
@@ -97,6 +97,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(createIntent);
             }
         });
-
+        */
     }
 }
