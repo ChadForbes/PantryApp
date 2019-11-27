@@ -5,7 +5,7 @@
     <color name="colorAccent">#D81B60</color>
 
     <color name="shopping_list_color">#000000</color>
-    <color name="pantry_app_color">#ffffff</color>
-    <color name="lowerheader_color">#1c7ce0</color>
+    <color name="pantry_app_color">#FFFFFF</color>
+    <color name="lowerheader_color">#1C7CE0</color>
     <color name="rectangle_194_color">#1f6adb</color>
 </resources>
