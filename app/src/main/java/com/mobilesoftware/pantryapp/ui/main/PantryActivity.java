@@ -14,8 +14,8 @@ import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.mobilesoftware.pantryapp.Food;
-import com.mobilesoftware.pantryapp.FoodRepository;
+import com.mobilesoftware.pantryapp.database.Food;
+import com.mobilesoftware.pantryapp.database.FoodRepository;
 import com.mobilesoftware.pantryapp.MenuActivity;
 import com.mobilesoftware.pantryapp.NewItemActivity;
 import com.mobilesoftware.pantryapp.R;
@@ -94,6 +94,7 @@ public class PantryActivity extends AppCompatActivity {
                 break;
             case R.id.addItem:
                 intent = new Intent(this, NewItemActivity.class);
+                intent.putExtra("mode", "create");
                 startActivity(intent);
                 break;
         }

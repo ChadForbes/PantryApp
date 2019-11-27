@@ -12,6 +12,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 
+import com.mobilesoftware.pantryapp.database.Food;
+import com.mobilesoftware.pantryapp.database.FoodRepository;
 import com.mobilesoftware.pantryapp.ui.main.PantryActivity;
 
 

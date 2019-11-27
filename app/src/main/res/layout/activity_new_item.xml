@@ -37,12 +37,15 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
+
         <EditText
             android:id="@+id/nameet"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="100dp"
             android:ems="10"
             android:hint="Name"
             android:inputType="textAutoComplete" />

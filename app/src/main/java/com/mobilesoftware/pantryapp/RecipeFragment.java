@@ -13,12 +13,12 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.FrameLayout;
 import android.widget.LinearLayout;
-import android.widget.TableRow;
+
+import com.mobilesoftware.pantryapp.database.Food;
+import com.mobilesoftware.pantryapp.database.FoodRepository;
 
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 

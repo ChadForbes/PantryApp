@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
+import com.mobilesoftware.pantryapp.database.FoodRepository;
 import com.mobilesoftware.pantryapp.ui.main.PantryActivity;
 import com.mobilesoftware.pantryapp.ui.main.ViewPagerAdapter;
 
@@ -102,6 +103,8 @@ public class MenuActivity extends AppCompatActivity {
                 startActivity(intent);
                 break;
             case R.id.recipes:
+                intent = new Intent(this, RecipeActivity.class);
+                startActivity(intent);
                 break;
             case R.id.shopping:
                 break;
