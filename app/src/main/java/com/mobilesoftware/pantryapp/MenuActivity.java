@@ -107,8 +107,11 @@ public class MenuActivity extends AppCompatActivity {
                 startActivity(intent);
                 break;
             case R.id.shopping:
+
                 break;
             case R.id.store:
+                intent = new Intent(this, MapActivity.class);
+                startActivity(intent);
                 break;
         }
     }

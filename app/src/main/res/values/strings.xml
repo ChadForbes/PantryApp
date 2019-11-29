@@ -15,6 +15,7 @@
     <string name="add_to_search_text">Add to Search</string>
     <string name="aliases_text">Aliases</string>
     <string name="create_text">Create</string>
+    <string name="map_string">Map</string>
     <string name="close_text">Close</string>
     <string name="delete_text">Delete</string>
     <string name="recipes_string">Recipes</string>
