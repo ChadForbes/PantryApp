@@ -90,6 +90,12 @@ public class FoodRepository {
         return foodDatabase.foodDao().getAllFoods();
     }
 
+    public LiveData<List<Food>> getFoodsByName(final String name, final Boolean shoppingList) {
+        return foodDatabase.foodDao().getFoodByName(name, shoppingList);
+    }
+
+
+    public LiveData<List<Food>> getFoodsByNameAndType(String foodName, Boolean fruit, Boolean dairy, Boolean meat, Boolean carb, Boolean vegetable, Boolean shoppingList) { return foodDatabase.foodDao().getFoodByNameAndType(foodName, fruit, dairy, meat, carb, vegetable, shoppingList);}
     public LiveData<List<Food>> getSearchableFoods() {
         return foodDatabase.foodDao().getFoodSearchable();
     }
