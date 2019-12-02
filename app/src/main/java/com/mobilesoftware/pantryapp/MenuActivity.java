@@ -5,16 +5,15 @@ import android.os.Bundle;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.LifecycleOwner;
 import androidx.viewpager.widget.ViewPager;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
-import com.mobilesoftware.pantryapp.ui.main.MyPantryFragment;
+import com.mobilesoftware.pantryapp.database.FoodRepository;
+import com.mobilesoftware.pantryapp.ui.main.PantryActivity;
 import com.mobilesoftware.pantryapp.ui.main.ViewPagerAdapter;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MenuActivity extends AppCompatActivity {
     FoodRepository foodRepository;
 
     TabLayout tabLayout;
@@ -25,9 +24,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         foodRepository = new FoodRepository(getApplicationContext());
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_menu);
 
-        tabLayout = findViewById(R.id.tabs);
+        /*tabLayout = findViewById(R.id.tabs);
         viewPager = findViewById(R.id.view_pager);
         adapter = new ViewPagerAdapter(getSupportFragmentManager());
 
@@ -35,16 +34,16 @@ public class MainActivity extends AppCompatActivity {
         adapter.AddFragment(new RecipeFragment(), "Recipes");
 
         viewPager.setAdapter(adapter);
-        tabLayout.setupWithViewPager(viewPager);
+        tabLayout.setupWithViewPager(viewPager);*/
 
-//        Food food = new Food();
-//        food.name = "Beef";
-//        food.aliases = "";
-//        food.amount = 16;
-//        food.amountType = "lb";
-//        food.searchable = true;
+        /*Food food = new Food();
+        food.name = "Beef";
+        food.aliases = "";
+        food.amount = 16;
+        food.amountType = "lb";
+        food.searchable = true;
 //
-//        foodRepository.insertFood(food);
+       foodRepository.insertFood(food);*/
 //
 //        Food food2 = new Food();
 //        food2.name = "Chicken";
@@ -73,18 +72,13 @@ public class MainActivity extends AppCompatActivity {
 
 //        foodRepository.insertFood(food4);
 
-
-        final LifecycleOwner owner = this;
-
-        Food newFood;
-
-        /*foodRepository.getFoods().observe(this, new Observer<List<Food>>() {
+        /*/foodRepository.getFoods().observe(this, new Observer<List<Food>>() {
             @Override
             public void onChanged(@Nullable final List<Food> foods) {
                 Log.i("nice", foods.get(0).name);
             }
 
-        });*/
+        });
 
 
         final FloatingActionButton createButton = (FloatingActionButton) findViewById(R.id.createButton);
@@ -97,6 +91,28 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(createIntent);
             }
         });
+*/
+    }
 
+    public void onClick(View v){
+        Intent intent;
+
+        switch (v.getId()){
+            case R.id.pantry:
+                intent = new Intent(this, PantryActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.recipes:
+                intent = new Intent(this, RecipeActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.shopping:
+
+                break;
+            case R.id.store:
+                intent = new Intent(this, MapActivity.class);
+                startActivity(intent);
+                break;
+        }
     }
 }

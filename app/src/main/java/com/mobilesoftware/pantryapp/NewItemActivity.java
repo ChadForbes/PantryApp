@@ -9,31 +9,35 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 
-public class CreateItemActivity extends AppCompatActivity {
+import com.mobilesoftware.pantryapp.database.Food;
+import com.mobilesoftware.pantryapp.database.FoodRepository;
+import com.mobilesoftware.pantryapp.ui.main.PantryActivity;
 
+
+public class NewItemActivity extends AppCompatActivity {
+
+    Intent intent;
+    int id;
+    Intent i;
     private boolean createMode;
-
     private TextView titleTV;
     private EditText nameET, expirET, amtET, unitET, aliasET;
     private CheckBox addsearch;
     private Button cancelbtn, delbtn, createbtn;
-    int id;
-    Intent i;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create_item);
+        setContentView(R.layout.activity_new_item);
+        id = getIntent().getExtras().getInt("itemId", 1);
 
         final FoodRepository foodRepository = new FoodRepository(getApplicationContext());
 
         initViews();
 
-        id = getIntent().getExtras().getInt("itemId", 1);
 
         i = new Intent();
 
@@ -44,10 +48,13 @@ public class CreateItemActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                CreateItemActivity.this.finish();
+                NewItemActivity.this.finish();
+                intent = new Intent(getBaseContext(), PantryActivity.class);
+
             }
         });
 
+        // receives message tell the activity if this is an edit or create new
         createMode = getIntent().getExtras().getString("mode").equals("create");
 
         if (!createMode) {
@@ -85,11 +92,11 @@ public class CreateItemActivity extends AppCompatActivity {
 
                     broadcast(true);
                     foodRepository.updateFood(food);
-                    CreateItemActivity.this.finish();
+                    NewItemActivity.this.finish();
                 }
             });
 
-            /** currently not setup to delete to database*/
+            // currently not setup to delete to database
             // Delete Item
             delbtn.setOnClickListener(new View.OnClickListener() {
 
@@ -105,7 +112,7 @@ public class CreateItemActivity extends AppCompatActivity {
                     food.searchable = addsearch.isChecked();
                     broadcast(true);
                     foodRepository.deleteFood(food);
-                    CreateItemActivity.this.finish();
+                    NewItemActivity.this.finish();
                 }
             });
 
@@ -123,7 +130,7 @@ public class CreateItemActivity extends AppCompatActivity {
                     food.searchable = addsearch.isChecked();
                     broadcast(true);
                     foodRepository.insertFood(food);
-                    CreateItemActivity.this.finish();
+                    NewItemActivity.this.finish();
                 }
             });
         }
@@ -148,3 +155,5 @@ public class CreateItemActivity extends AppCompatActivity {
         sendBroadcast(i);
     }
 }
+
+

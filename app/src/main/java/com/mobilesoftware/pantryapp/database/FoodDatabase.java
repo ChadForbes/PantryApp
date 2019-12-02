@@ -1,4 +1,4 @@
-package com.mobilesoftware.pantryapp;
+package com.mobilesoftware.pantryapp.database;
 
 import androidx.room.Database;
 import androidx.room.RoomDatabase;

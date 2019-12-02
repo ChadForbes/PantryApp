@@ -5,47 +5,41 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.mobilesoftware.pantryapp.CreateItemActivity;
-import com.mobilesoftware.pantryapp.Food;
-import com.mobilesoftware.pantryapp.FoodRepository;
+import com.mobilesoftware.pantryapp.database.Food;
+import com.mobilesoftware.pantryapp.database.FoodRepository;
+import com.mobilesoftware.pantryapp.MenuActivity;
+import com.mobilesoftware.pantryapp.NewItemActivity;
 import com.mobilesoftware.pantryapp.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MyPantryFragment extends Fragment {
+public class PantryActivity extends AppCompatActivity {
 
-    View v;
+    RecyclerViewAdapter recyclerAdapter;
+    Intent editIntent;
     private RecyclerView mrecyclerView;
     private List<Food> foodList;
     private FoodRepository foodRepository;
-    RecyclerViewAdapter recyclerAdapter;
-    Intent editIntent;
-
-    public MyPantryFragment() {
-        // Required empty public constructor
-    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_pantry);
 
-        editIntent = new Intent(getContext(), CreateItemActivity.class);
+        editIntent = new Intent(getBaseContext(), NewItemActivity.class);
         foodList = new ArrayList<>();
 
-        foodRepository = new FoodRepository(getContext());
+        foodRepository = new FoodRepository(getBaseContext());
         foodRepository.getFoods().observe(this, new Observer<List<Food>>() {
             @Override
             public void onChanged(@Nullable final List<Food> foods) {
@@ -64,6 +58,7 @@ public class MyPantryFragment extends Fragment {
             }
 
         });
+
         final LifecycleOwner owner = this;
 
         IntentFilter filter = new IntentFilter("com.send.broadcast.OUTGOING BROADCAST");
@@ -76,8 +71,7 @@ public class MyPantryFragment extends Fragment {
                     foodRepository.getFoods().observe(owner, new Observer<List<Food>>() {
                         @Override
                         public void onChanged(@Nullable final List<Food> foods) {
-                           foodList=foods;
-                            Log.d("TEST","HERE");
+                            foodList = foods;
                             recyclerAdapter.updatelst(foodList);
                             recyclerAdapter.notifyDataSetChanged();
 
@@ -87,20 +81,30 @@ public class MyPantryFragment extends Fragment {
                 }
             }
         };
-        getActivity().registerReceiver(listener,filter);
+        this.registerReceiver(listener, filter);
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        v = inflater.inflate(R.layout.fragment_my_pantry, container, false);
-        return v;
+    public void onClick(View v) {
+        Intent intent;
+
+        switch (v.getId()) {
+            case R.id.backmenu:
+                intent = new Intent(this, MenuActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.addItem:
+                intent = new Intent(this, NewItemActivity.class);
+                intent.putExtra("mode", "create");
+                startActivity(intent);
+                break;
+        }
     }
 
     public void recyclerViewSetup() {
-        mrecyclerView = (RecyclerView) v.findViewById(R.id.foodlst);
-        recyclerAdapter = new RecyclerViewAdapter(getContext(), foodList);
-        mrecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        mrecyclerView = (RecyclerView) findViewById(R.id.foodlst);
+        recyclerAdapter = new RecyclerViewAdapter(getBaseContext(), foodList);
+        mrecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mrecyclerView.setAdapter(recyclerAdapter);
     }
+
 }

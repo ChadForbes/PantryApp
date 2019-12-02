@@ -3,4 +3,9 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+
+    <color name="shopping_list_color">#000000</color>
+    <color name="pantry_app_color">#FFFFFF</color>
+    <color name="lowerheader_color">#1C7CE0</color>
+    <color name="rectangle_194_color">#1f6adb</color>
 </resources>
