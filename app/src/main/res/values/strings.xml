@@ -6,6 +6,8 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    <string name="google_maps_API_key">AIzaSyCBfgJHDfC38GCW_miFEgoqyew-0isMzOg</string>
+    
     <string name="create_item_text">Create New Item</string>
     <string name="edit_item_text">Edit Item</string>
     <string name="name_text">Name</string>

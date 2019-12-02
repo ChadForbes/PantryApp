@@ -19,14 +19,14 @@ import com.mobilesoftware.pantryapp.ui.main.PantryActivity;
 
 public class NewItemActivity extends AppCompatActivity {
 
-    private boolean createMode;
     Intent intent;
+    int id;
+    Intent i;
+    private boolean createMode;
     private TextView titleTV;
     private EditText nameET, expirET, amtET, unitET, aliasET;
     private CheckBox addsearch;
     private Button cancelbtn, delbtn, createbtn;
-    int id;
-    Intent i;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

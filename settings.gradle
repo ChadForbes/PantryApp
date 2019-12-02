@@ -1,2 +1,2 @@
-include ':app'
+include ':app', ':maps-sdk-3.0.0-beta'
 rootProject.name='PantryApp'
