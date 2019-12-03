@@ -23,6 +23,7 @@ public class NewItemActivity extends AppCompatActivity {
     Intent intent;
     int id;
     Intent i;
+    private String mode;
     private boolean createMode;
     private TextView titleTV;
     private EditText nameET, expirET, amtET, unitET, aliasET;
@@ -55,15 +56,26 @@ public class NewItemActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 NewItemActivity.this.finish();
-                intent = new Intent(getBaseContext(), PantryActivity.class);
-
+                if (mode.equals("createpantry")) {
+                    intent = new Intent(getBaseContext(), PantryActivity.class);
+                } else if (mode.equals("createshop")) {
+                    intent = new Intent(getBaseContext(), ShoppingListActivity.class);
+                }
             }
         });
 
         // receives message tell the activity if this is an edit or create new
-        createMode = getIntent().getExtras().getString("mode").equals("createpantry");
+        if (getIntent().getExtras().getString("mode").equals("createpantry")) {
+            mode = "createpantry";
+        } else if (getIntent().getExtras().getString("mode").equals("editP")) {
+            mode = "editP";
+        } else if (getIntent().getExtras().getString("mode").equals("createshop")) {
+            mode = "createshop";
+        }else if (getIntent().getExtras().getString("mode").equals("editS")) {
+            mode = "editS";
+        }
 
-        if (!createMode) {
+        if (mode.equals("editP")) {
             createbtn.setText("Save");
             titleTV.setText("Edit Item");
             delbtn.setEnabled(true);
@@ -88,6 +100,13 @@ public class NewItemActivity extends AppCompatActivity {
                 }
             });
 
+            cancelbtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    intent = new Intent(getBaseContext(), PantryActivity.class);
+                    NewItemActivity.this.finish();
+                }
+            });
 
             // Edit item
             createbtn.setOnClickListener(new View.OnClickListener() {
@@ -138,8 +157,90 @@ public class NewItemActivity extends AppCompatActivity {
                     NewItemActivity.this.finish();
                 }
             });
+        }else if(mode.equals("editS")){
+                createbtn.setText("Save");
+                titleTV.setText("Edit Item");
+                delbtn.setEnabled(true);
+                delbtn.setVisibility(View.VISIBLE);
+                foodRepository.getFood(id).observe(this, new Observer<Food>() {
+                    @Override
+                    public void onChanged(@NonNull final Food foods) {
+                        if (foods != null) {
+                            nameET.setText(foods.name);
+                            expirET.setText(foods.expiryDate);
+                            amtET.setText(Float.toString(foods.amount));
+                            unitET.setText(foods.amountType);
+                            aliasET.setText(foods.aliases);
+                            addsearch.setChecked(foods.searchable);
+                            shoppingList.setChecked(foods.shoppingList);
+                            fruitbtn.setChecked(foods.fruit);
+                            meatbtn.setChecked(foods.meat);
+                            vegetablebtn.setChecked(foods.vegetable);
+                            carbbtn.setChecked(foods.carb);
+                            dairybtn.setChecked(foods.dairy);
+                        }
+                    }
+                });
 
-        } else if (createMode) {
+            cancelbtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    intent = new Intent(getBaseContext(), ShoppingListActivity.class);
+                    NewItemActivity.this.finish();
+                }
+            });
+
+                // Edit item
+                createbtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Food food = new Food();
+                        food.uid = id;
+                        food.name = nameET.getText().toString();
+                        food.expiryDate = expirET.getText().toString();
+                        food.amount = Float.parseFloat(amtET.getText().toString());
+                        food.amountType = unitET.getText().toString();
+                        food.aliases = aliasET.getText().toString();
+                        food.searchable = addsearch.isChecked();
+                        food.shoppingList = true;
+                        food.fruit = fruitbtn.isChecked();
+                        food.meat = meatbtn.isChecked();
+                        food.vegetable = vegetablebtn.isChecked();
+                        food.carb = carbbtn.isChecked();
+                        food.dairy = dairybtn.isChecked();
+                        broadcast(true);
+                        foodRepository.updateFood(food);
+                        NewItemActivity.this.finish();
+                    }
+                });
+
+                // currently not setup to delete to database
+                // Delete Item
+                delbtn.setOnClickListener(new View.OnClickListener() {
+
+                    @Override
+                    public void onClick(View view) {
+                        Food food = new Food();
+                        food.uid = id;
+                        food.name = nameET.getText().toString();
+                        food.expiryDate = expirET.getText().toString();
+                        food.amount = Float.parseFloat(amtET.getText().toString());
+                        food.amountType = unitET.getText().toString();
+                        food.aliases = aliasET.getText().toString();
+                        food.searchable = addsearch.isChecked();
+                        food.shoppingList = true;
+                        food.fruit = fruitbtn.isChecked();
+                        food.meat = meatbtn.isChecked();
+                        food.vegetable = vegetablebtn.isChecked();
+                        food.carb = carbbtn.isChecked();
+                        food.dairy = dairybtn.isChecked();
+                        broadcast(true);
+                        foodRepository.deleteFood(food);
+                        NewItemActivity.this.finish();
+                    }
+                });
+
+            } else if (mode.equals("createpantry")) {
             createbtn.setOnClickListener(new View.OnClickListener() {
 
                 @Override
@@ -159,6 +260,45 @@ public class NewItemActivity extends AppCompatActivity {
                     food.dairy = dairybtn.isChecked();
                     broadcast(true);
                     foodRepository.insertFood(food);
+                    intent = new Intent(getBaseContext(), PantryActivity.class);
+                    NewItemActivity.this.finish();
+                }
+            });
+            cancelbtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    intent = new Intent(getBaseContext(), PantryActivity.class);
+                    NewItemActivity.this.finish();
+                }
+            });
+        } else if (mode.equals("createshop")) {
+            createbtn.setOnClickListener(new View.OnClickListener() {
+
+                @Override
+                public void onClick(View view) {
+                    Food food = new Food();
+                    food.name = nameET.getText().toString();
+                    food.expiryDate = expirET.getText().toString();
+                    food.amount = Float.parseFloat(amtET.getText().toString());
+                    food.amountType = unitET.getText().toString();
+                    food.aliases = aliasET.getText().toString();
+                    food.searchable = addsearch.isChecked();
+                    food.shoppingList = true;
+                    food.fruit = fruitbtn.isChecked();
+                    food.meat = meatbtn.isChecked();
+                    food.vegetable = vegetablebtn.isChecked();
+                    food.carb = carbbtn.isChecked();
+                    food.dairy = dairybtn.isChecked();
+                    broadcast(true);
+                    foodRepository.insertFood(food);
+                    intent = new Intent(getBaseContext(), ShoppingListActivity.class);
+                    NewItemActivity.this.finish();
+                }
+            });
+            cancelbtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    intent = new Intent(getBaseContext(), ShoppingListActivity.class);
                     NewItemActivity.this.finish();
                 }
             });

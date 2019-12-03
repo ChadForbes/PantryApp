@@ -9,6 +9,7 @@ import android.os.Vibrator;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -34,17 +35,20 @@ public class ShoppingListActivity extends AppCompatActivity {
     private RecyclerView mrecyclerView;
     private List<Food> foodList;
     private FoodRepository foodRepository;
-    private RadioButton fruitbtn, dairybtn, meatbtn, vegetablebtn, carbbtn;
+    private RadioButton fruitbtn, dairybtn, meatbtn, vegetablebtn, carbbtn, nonebtn;
     private EditText searchtext;
     private ShakeListener mShaker;
     private TextView titletv;
+    private RadioGroup rg;
+    private String searchText;
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pantry);
+        setContentView(R.layout.activity_shopping);
 
-        titletv = findViewById(R.id.titletv);
+        titletv = findViewById(R.id.titletv1);
         titletv.setText("My Shopping List");
         final Vibrator vibe = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
 
@@ -71,8 +75,9 @@ public class ShoppingListActivity extends AppCompatActivity {
         Boolean vegetable = vegetablebtn.isChecked();
         Boolean carb = carbbtn.isChecked();
         Boolean dairy = dairybtn.isChecked();
+        Boolean none = nonebtn.isChecked();
 
-        String searchText = searchtext.getText().toString() + "%";
+        searchText = searchtext.getText().toString() + "%";
 
         if (!fruit && !dairy && !carb && !vegetable && !meat) {
             foodRepository.getFoodsByName(searchText, true).observe(this, new Observer<List<Food>>() {
@@ -85,7 +90,7 @@ public class ShoppingListActivity extends AppCompatActivity {
                     recyclerAdapter.setOnItemClickListener(new RecyclerViewAdapter.OnItemClickListener() {
                         @Override
                         public void onItemClick(int position) {
-                            editIntent.putExtra("mode", "edit");
+                            editIntent.putExtra("mode", "editS");
                             editIntent.putExtra("itemId", foodList.get(position).uid);
                             startActivity(editIntent);
                         }
@@ -104,7 +109,7 @@ public class ShoppingListActivity extends AppCompatActivity {
                     recyclerAdapter.setOnItemClickListener(new RecyclerViewAdapter.OnItemClickListener() {
                         @Override
                         public void onItemClick(int position) {
-                            editIntent.putExtra("mode", "edit");
+                            editIntent.putExtra("mode", "editS");
                             editIntent.putExtra("itemId", foodList.get(position).uid);
                             startActivity(editIntent);
                         }
@@ -123,7 +128,8 @@ public class ShoppingListActivity extends AppCompatActivity {
             public void onReceive(Context context, Intent intet) {
 
                 if (intet.getExtras().getBoolean("update")) {
-                    foodRepository.getFoods().observe(owner, new Observer<List<Food>>() {
+                    searchText = searchtext.getText().toString() + "%";
+                    foodRepository.getFoodsByName(searchText, true).observe(owner, new Observer<List<Food>>() {
                         @Override
                         public void onChanged(@Nullable final List<Food> foods) {
                             foodList = foods;
@@ -142,27 +148,47 @@ public class ShoppingListActivity extends AppCompatActivity {
 
     public void startCreateActivity() {
         Intent intent = new Intent(this, NewItemActivity.class);
-        intent.putExtra("mode", "create");
+        intent.putExtra("mode", "createshop");
         startActivity(intent);
     }
 
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.backmenu:
+            case R.id.backmenu1:
                 Intent intent = new Intent(this, MenuActivity.class);
                 startActivity(intent);
                 break;
-            case R.id.addItem:
+            case R.id.addItem1:
                 startCreateActivity();
                 break;
-            case R.id.searchBtn:
+            case R.id.searchBtn1:
+                generateItems();
+                break;
+        }
+        switch (rg.getCheckedRadioButtonId()){
+            case R.id.carbButton1:
+                generateItems();
+                break;
+            case R.id.dairyButton1:
+                generateItems();
+                break;
+            case R.id.vegeButton1:
+                generateItems();
+                break;
+            case R.id.meatButton1:
+                generateItems();
+                break;
+            case R.id.fruitButton1:
+                generateItems();
+                break;
+            case R.id.nonebtn1:
                 generateItems();
                 break;
         }
     }
 
     public void recyclerViewSetup() {
-        mrecyclerView = findViewById(R.id.foodlst);
+        mrecyclerView = findViewById(R.id.foodlst1);
         mrecyclerView.removeAllViewsInLayout();
         recyclerAdapter = new RecyclerViewAdapter(getBaseContext(), foodList);
 
@@ -171,12 +197,15 @@ public class ShoppingListActivity extends AppCompatActivity {
     }
 
     public void initViews() {
-        fruitbtn = findViewById(R.id.fruitButton);
-        dairybtn = findViewById(R.id.dairyButton);
-        meatbtn = findViewById(R.id.meatButton);
-        vegetablebtn = findViewById(R.id.vegeButton);
-        carbbtn = findViewById(R.id.carbButton);
-        searchtext = findViewById(R.id.searchText);
+        fruitbtn = findViewById(R.id.fruitButton1);
+        dairybtn = findViewById(R.id.dairyButton1);
+        meatbtn = findViewById(R.id.meatButton1);
+        vegetablebtn = findViewById(R.id.vegeButton1);
+        carbbtn = findViewById(R.id.carbButton1);
+        searchtext = findViewById(R.id.searchText1);
+        rg = findViewById(R.id.rg1);
+        nonebtn = findViewById(R.id.nonebtn1);
+
     }
 
 }

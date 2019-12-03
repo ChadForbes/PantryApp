@@ -24,7 +24,7 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:id="@+id/backmenu"
+                android:id="@+id/backmenu1"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -33,7 +33,7 @@
                 app:srcCompat="@drawable/back" />
 
             <TextView
-                android:id="@+id/titletv"
+                android:id="@+id/titletv1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center|center_horizontal|center_vertical"
@@ -45,7 +45,7 @@
                 android:textSize="20sp" />
 
             <ImageView
-                android:id="@+id/addItem"
+                android:id="@+id/addItem1"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -63,7 +63,7 @@
         android:orientation="horizontal">
 
         <EditText
-            android:id="@+id/searchText"
+            android:id="@+id/searchText1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -71,7 +71,7 @@
             android:inputType="textPersonName" />
 
         <Button
-            android:id="@+id/searchBtn"
+            android:id="@+id/searchBtn1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -80,7 +80,7 @@
     </LinearLayout>
 
     <RadioGroup
-        android:id="@+id/rg"
+        android:id="@+id/rg1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -89,57 +89,58 @@
         android:orientation="horizontal">
 
         <RadioButton
-            android:id="@+id/nonebtn"
+            android:id="@+id/nonebtn1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:checked="true"
+            android:onClick="onClick"
             android:text="Any"
             android:textSize="12sp" />
 
         <RadioButton
-            android:id="@+id/carbButton"
+            android:id="@+id/carbButton1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
+            android:onClick="onClick"
             android:text="Carb"
             android:textSize="12sp" />
 
         <RadioButton
-            android:id="@+id/dairyButton"
+            android:id="@+id/dairyButton1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
+            android:onClick="onClick"
             android:text="Dairy"
             android:textSize="12sp" />
 
         <RadioButton
-            android:id="@+id/vegeButton"
+            android:id="@+id/vegeButton1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
+            android:onClick="onClick"
             android:text="Vegetable"
             android:textSize="12sp" />
 
         <RadioButton
-            android:id="@+id/meatButton"
+            android:id="@+id/meatButton1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
+            android:onClick="onClick"
             android:text="Meat"
             android:textSize="12sp" />
 
         <RadioButton
-            android:id="@+id/fruitButton"
+            android:id="@+id/fruitButton1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
+            android:onClick="onClick"
             android:text="Fruit"
             android:textSize="12sp" />
 
     </RadioGroup>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/foodlst"
+        android:id="@+id/foodlst1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingTop="10dp">

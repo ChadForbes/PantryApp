@@ -13,6 +13,7 @@ import androidx.viewpager.widget.ViewPager;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.material.tabs.TabLayout;
+import com.mobilesoftware.pantryapp.MapActivity;
 import com.mobilesoftware.pantryapp.R;
 import com.mobilesoftware.pantryapp.database.FoodRepository;
 import com.mobilesoftware.pantryapp.ui.main.adapters.ViewPagerAdapter;

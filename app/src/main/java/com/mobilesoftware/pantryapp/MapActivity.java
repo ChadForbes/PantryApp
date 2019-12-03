@@ -1,4 +1,4 @@
-package com.mobilesoftware.pantryapp.ui.main;
+package com.mobilesoftware.pantryapp;
 
 import android.Manifest;
 import android.content.Intent;
@@ -24,6 +24,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.mobilesoftware.pantryapp.R;
+import com.mobilesoftware.pantryapp.ui.main.MenuActivity;
 
 public class MapActivity extends AppCompatActivity implements OnMapReadyCallback {
 

@@ -40,6 +40,7 @@ public class PantryActivity extends AppCompatActivity {
     private EditText searchtext;
     private ShakeListener mShaker;
     private RadioGroup rg;
+    private String searchText;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -74,7 +75,7 @@ public class PantryActivity extends AppCompatActivity {
         Boolean dairy = dairybtn.isChecked();
         Boolean none = nonebtn.isChecked();
 
-        String searchText = searchtext.getText().toString() + "%";
+        searchText = searchtext.getText().toString() + "%";
 
 
         if (none && !fruit && !dairy && !carb && !vegetable && !meat) {
@@ -89,7 +90,7 @@ public class PantryActivity extends AppCompatActivity {
                     recyclerAdapter.setOnItemClickListener(new RecyclerViewAdapter.OnItemClickListener() {
                         @Override
                         public void onItemClick(int position) {
-                            editIntent.putExtra("mode", "edit");
+                            editIntent.putExtra("mode", "editP");
                             editIntent.putExtra("itemId", foodList.get(position).uid);
                             startActivity(editIntent);
                         }
@@ -109,7 +110,7 @@ public class PantryActivity extends AppCompatActivity {
                     recyclerAdapter.setOnItemClickListener(new RecyclerViewAdapter.OnItemClickListener() {
                         @Override
                         public void onItemClick(int position) {
-                            editIntent.putExtra("mode", "edit");
+                            editIntent.putExtra("mode", "editP");
                             editIntent.putExtra("itemId", foodList.get(position).uid);
                             startActivity(editIntent);
                         }
@@ -127,7 +128,8 @@ public class PantryActivity extends AppCompatActivity {
             public void onReceive(Context context, Intent intet) {
 
                 if (intet.getExtras().getBoolean("update")) {
-                    foodRepository.getFoods().observe(owner, new Observer<List<Food>>() {
+                    searchText = searchtext.getText().toString() + "%";
+                    foodRepository.getFoodsByName(searchText, false).observe(owner, new Observer<List<Food>>() {
                         @Override
                         public void onChanged(@Nullable final List<Food> foods) {
                             foodList = foods;

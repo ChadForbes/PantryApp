@@ -40,7 +40,7 @@
             android:name=".ui.main.NewItemActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ui.main.MapActivity"
+            android:name=".MapActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ui.main.RecipeActivity"
