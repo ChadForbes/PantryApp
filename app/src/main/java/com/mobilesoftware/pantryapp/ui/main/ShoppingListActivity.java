@@ -9,26 +9,26 @@ import android.os.Vibrator;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.mobilesoftware.pantryapp.ShakeListener;
-import com.mobilesoftware.pantryapp.database.Food;
-import com.mobilesoftware.pantryapp.database.FoodRepository;
 import com.mobilesoftware.pantryapp.MenuActivity;
 import com.mobilesoftware.pantryapp.NewItemActivity;
 import com.mobilesoftware.pantryapp.R;
+import com.mobilesoftware.pantryapp.ShakeListener;
+import com.mobilesoftware.pantryapp.database.Food;
+import com.mobilesoftware.pantryapp.database.FoodRepository;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class PantryActivity extends AppCompatActivity {
+public class ShoppingListActivity extends AppCompatActivity {
 
     RecyclerViewAdapter recyclerAdapter;
     Intent editIntent;
@@ -38,12 +38,15 @@ public class PantryActivity extends AppCompatActivity {
     private RadioButton fruitbtn, dairybtn, meatbtn, vegetablebtn, carbbtn;
     private EditText searchtext;
     private ShakeListener mShaker;
+    private TextView titletv;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pantry);
 
+        titletv = findViewById(R.id.titletv);
+        titletv.setText("My Shopping List");
         final Vibrator vibe = (Vibrator)getSystemService(Context.VIBRATOR_SERVICE);
 
         mShaker = new ShakeListener(this);
@@ -74,7 +77,7 @@ public class PantryActivity extends AppCompatActivity {
         String searchText = searchtext.getText().toString() + "%";
 
         if(!fruit && !dairy && !carb && !vegetable && !meat) {
-            foodRepository.getFoodsByName(searchText, false).observe(this, new Observer<List<Food>>() {
+            foodRepository.getFoodsByName(searchText, true).observe(this, new Observer<List<Food>>() {
                 @Override
                 public void onChanged(@Nullable final List<Food> foods) {
                     foodList.addAll(foods);
@@ -94,7 +97,7 @@ public class PantryActivity extends AppCompatActivity {
             });
         }
         else {
-            foodRepository.getFoodsByNameAndType(searchText, fruit, dairy, meat, carb, vegetable, false).observe(this, new Observer<List<Food>>() {
+            foodRepository.getFoodsByNameAndType(searchText, fruit, dairy, meat, carb, vegetable, true).observe(this, new Observer<List<Food>>() {
                 @Override
                 public void onChanged(@Nullable final List<Food> foods) {
                     foodList.addAll(foods);

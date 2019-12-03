@@ -52,13 +52,84 @@
                 android:clickable="true"
                 android:onClick="onClick"
                 app:srcCompat="@drawable/path" />
+
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/searchText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:inputType="textPersonName" />
+
+        <Button
+            android:id="@+id/searchBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="onClick"
+            android:text="@android:string/search_go" />
+    </LinearLayout>
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layoutDirection="ltr"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/carbButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Carb" />
+
+        <RadioButton
+            android:id="@+id/dairyButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Dairy" />
+
+        <RadioButton
+            android:id="@+id/vegeButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Vegetable" />
+
+        <RadioButton
+            android:id="@+id/meatButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Meat" />
+
+        <RadioButton
+            android:id="@+id/fruitButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Fruit" />
+
+    </RadioGroup>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/foodlst"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingTop="10dp" />
+        android:paddingTop="10dp">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
 </LinearLayout>

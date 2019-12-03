@@ -89,18 +89,71 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="20dp"
             android:ems="10"
             android:hint="@string/aliases_text"
             android:inputType="textMultiLine"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layoutDirection="ltr"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/carbButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Carb" />
+
+            <RadioButton
+                android:id="@+id/dairyButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Dairy" />
+
+            <RadioButton
+                android:id="@+id/vegeButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Vegetable" />
+
+            <RadioButton
+                android:id="@+id/meatButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Meat" />
+
+            <RadioButton
+                android:id="@+id/fruitButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Fruit" />
+
+        </RadioGroup>
+
+        <CheckBox
+            android:id="@+id/shoppingListButton"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="Add To Shopping List" />
 
         <CheckBox
             android:id="@+id/searchbtntog"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="92dp"
+            android:layout_marginTop="10dp"
             android:text="@string/add_to_search_text"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 

@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -25,7 +26,9 @@ public class NewItemActivity extends AppCompatActivity {
     private boolean createMode;
     private TextView titleTV;
     private EditText nameET, expirET, amtET, unitET, aliasET;
-    private CheckBox addsearch;
+    private CheckBox addsearch, shoppingList;
+
+    private RadioButton fruitbtn, dairybtn, meatbtn, vegetablebtn, carbbtn;
     private Button cancelbtn, delbtn, createbtn;
 
     @Override
@@ -72,6 +75,12 @@ public class NewItemActivity extends AppCompatActivity {
                         unitET.setText(foods.amountType);
                         aliasET.setText(foods.aliases);
                         addsearch.setChecked(foods.searchable);
+                        shoppingList.setChecked(foods.shoppingList);
+                        fruitbtn.setChecked(foods.fruit);
+                        meatbtn.setChecked(foods.meat);
+                        vegetablebtn.setChecked(foods.vegetable);
+                        carbbtn.setChecked(foods.carb);
+                        dairybtn.setChecked(foods.dairy);
                     }
                 }
             });
@@ -89,7 +98,12 @@ public class NewItemActivity extends AppCompatActivity {
                     food.amountType = unitET.getText().toString();
                     food.aliases = aliasET.getText().toString();
                     food.searchable = addsearch.isChecked();
-
+                    food.shoppingList = shoppingList.isChecked();
+                    food.fruit = fruitbtn.isChecked();
+                    food.meat = meatbtn.isChecked();
+                    food.vegetable = vegetablebtn.isChecked();
+                    food.carb = carbbtn.isChecked();
+                    food.dairy = dairybtn.isChecked();
                     broadcast(true);
                     foodRepository.updateFood(food);
                     NewItemActivity.this.finish();
@@ -110,6 +124,12 @@ public class NewItemActivity extends AppCompatActivity {
                     food.amountType = unitET.getText().toString();
                     food.aliases = aliasET.getText().toString();
                     food.searchable = addsearch.isChecked();
+                    food.shoppingList = shoppingList.isChecked();
+                    food.fruit = fruitbtn.isChecked();
+                    food.meat = meatbtn.isChecked();
+                    food.vegetable = vegetablebtn.isChecked();
+                    food.carb = carbbtn.isChecked();
+                    food.dairy = dairybtn.isChecked();
                     broadcast(true);
                     foodRepository.deleteFood(food);
                     NewItemActivity.this.finish();
@@ -128,6 +148,12 @@ public class NewItemActivity extends AppCompatActivity {
                     food.amountType = unitET.getText().toString();
                     food.aliases = aliasET.getText().toString();
                     food.searchable = addsearch.isChecked();
+                    food.shoppingList = shoppingList.isChecked();
+                    food.fruit = fruitbtn.isChecked();
+                    food.meat = meatbtn.isChecked();
+                    food.vegetable = vegetablebtn.isChecked();
+                    food.carb = carbbtn.isChecked();
+                    food.dairy = dairybtn.isChecked();
                     broadcast(true);
                     foodRepository.insertFood(food);
                     NewItemActivity.this.finish();
@@ -147,6 +173,12 @@ public class NewItemActivity extends AppCompatActivity {
         cancelbtn = findViewById(R.id.cancelbtn);
         delbtn = findViewById(R.id.deletebtn);
         createbtn = findViewById(R.id.submitbtn);
+        fruitbtn = findViewById(R.id.fruitButton);
+        dairybtn = findViewById(R.id.dairyButton);
+        meatbtn = findViewById(R.id.meatButton);
+        vegetablebtn = findViewById(R.id.vegeButton);
+        carbbtn = findViewById(R.id.carbButton);
+        shoppingList = findViewById(R.id.shoppingListButton);
     }
 
     public void broadcast(Boolean update){
