@@ -19,7 +19,7 @@ public class FoodRepository {
     private FoodDatabase foodDatabase;
 
     public FoodRepository(Context context) {
-        foodDatabase = Room.databaseBuilder(context,FoodDatabase.class, DB_NAME)
+        foodDatabase = Room.databaseBuilder(context, FoodDatabase.class, DB_NAME)
                 .build();
     }
 
@@ -49,7 +49,7 @@ public class FoodRepository {
 
     public void deleteFood(final int id) {
         final LiveData<Food> food = getFood(id);
-        if(food != null) {
+        if (food != null) {
             new AsyncTask<Void, Void, Void>() {
                 @Override
                 protected Void doInBackground(Void... voids) {
@@ -71,7 +71,7 @@ public class FoodRepository {
     }
 
     public void deleteFood(final Food food) {
-        if(food != null) {
+        if (food != null) {
             new AsyncTask<Void, Void, Void>() {
                 @Override
                 protected Void doInBackground(Void... voids) {
@@ -95,7 +95,10 @@ public class FoodRepository {
     }
 
 
-    public LiveData<List<Food>> getFoodsByNameAndType(String foodName, Boolean fruit, Boolean dairy, Boolean meat, Boolean carb, Boolean vegetable, Boolean shoppingList) { return foodDatabase.foodDao().getFoodByNameAndType(foodName, fruit, dairy, meat, carb, vegetable, shoppingList);}
+    public LiveData<List<Food>> getFoodsByNameAndType(String foodName, Boolean fruit, Boolean dairy, Boolean meat, Boolean carb, Boolean vegetable, Boolean shoppingList) {
+        return foodDatabase.foodDao().getFoodByNameAndType(foodName, fruit, dairy, meat, carb, vegetable, shoppingList);
+    }
+
     public LiveData<List<Food>> getSearchableFoods() {
         return foodDatabase.foodDao().getFoodSearchable();
     }

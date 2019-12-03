@@ -24,7 +24,7 @@
             android:value="AIzaSyCTwTtd2H8szDNo2fwpZdXMbgxCN1hOv1c" />
 
         <activity
-            android:name=".MenuActivity"
+            android:name=".ui.main.MenuActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -37,13 +37,13 @@
             android:name=".ui.main.PantryActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".NewItemActivity"
+            android:name=".ui.main.NewItemActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".MapActivity"
+            android:name=".ui.main.MapActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".RecipeActivity"
+            android:name=".ui.main.RecipeActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ui.main.ShoppingListActivity"

@@ -18,12 +18,11 @@ import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.mobilesoftware.pantryapp.MenuActivity;
-import com.mobilesoftware.pantryapp.NewItemActivity;
 import com.mobilesoftware.pantryapp.R;
 import com.mobilesoftware.pantryapp.ShakeListener;
 import com.mobilesoftware.pantryapp.database.Food;
 import com.mobilesoftware.pantryapp.database.FoodRepository;
+import com.mobilesoftware.pantryapp.ui.main.adapters.RecyclerViewAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,12 +46,11 @@ public class ShoppingListActivity extends AppCompatActivity {
 
         titletv = findViewById(R.id.titletv);
         titletv.setText("My Shopping List");
-        final Vibrator vibe = (Vibrator)getSystemService(Context.VIBRATOR_SERVICE);
+        final Vibrator vibe = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
 
         mShaker = new ShakeListener(this);
-        mShaker.setOnShakeListener(new ShakeListener.OnShakeListener () {
-            public void onShake()
-            {
+        mShaker.setOnShakeListener(new ShakeListener.OnShakeListener() {
+            public void onShake() {
                 vibe.vibrate(100);
                 startCreateActivity();
             }
@@ -76,7 +74,7 @@ public class ShoppingListActivity extends AppCompatActivity {
 
         String searchText = searchtext.getText().toString() + "%";
 
-        if(!fruit && !dairy && !carb && !vegetable && !meat) {
+        if (!fruit && !dairy && !carb && !vegetable && !meat) {
             foodRepository.getFoodsByName(searchText, true).observe(this, new Observer<List<Food>>() {
                 @Override
                 public void onChanged(@Nullable final List<Food> foods) {
@@ -95,8 +93,7 @@ public class ShoppingListActivity extends AppCompatActivity {
                 }
 
             });
-        }
-        else {
+        } else {
             foodRepository.getFoodsByNameAndType(searchText, fruit, dairy, meat, carb, vegetable, true).observe(this, new Observer<List<Food>>() {
                 @Override
                 public void onChanged(@Nullable final List<Food> foods) {
@@ -165,7 +162,7 @@ public class ShoppingListActivity extends AppCompatActivity {
     }
 
     public void recyclerViewSetup() {
-        mrecyclerView = (RecyclerView) findViewById(R.id.foodlst);
+        mrecyclerView = findViewById(R.id.foodlst);
         mrecyclerView.removeAllViewsInLayout();
         recyclerAdapter = new RecyclerViewAdapter(getBaseContext(), foodList);
 

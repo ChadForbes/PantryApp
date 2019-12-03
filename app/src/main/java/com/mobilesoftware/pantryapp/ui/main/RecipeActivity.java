@@ -1,13 +1,7 @@
-package com.mobilesoftware.pantryapp;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.Observer;
+package com.mobilesoftware.pantryapp.ui.main;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -15,6 +9,10 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+
+import com.mobilesoftware.pantryapp.R;
 import com.mobilesoftware.pantryapp.database.Food;
 import com.mobilesoftware.pantryapp.database.FoodRepository;
 
@@ -68,45 +66,45 @@ public class RecipeActivity extends AppCompatActivity {
         mySearchButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
-            String toAdd = myEditText.getText().toString();
+                String toAdd = myEditText.getText().toString();
 
-            for (int i = 0; i < myAddToHere.getChildCount(); i++){
-                CheckBox cb = (CheckBox)myAddToHere.getChildAt(i);
-                if(cb.isChecked()) {
-                    toAdd += "," + cb.getText();
+                for (int i = 0; i < myAddToHere.getChildCount(); i++) {
+                    CheckBox cb = (CheckBox) myAddToHere.getChildAt(i);
+                    if (cb.isChecked()) {
+                        toAdd += "," + cb.getText();
 
-                }
-            }
-
-            System.out.println("Searching for...");
-            System.out.println(toAdd);
-
-
-            OkHttpClient client = new OkHttpClient();
-            String url = "https://www.food2fork.com/api/search?key=1e57f850de5ad1ed723a26fdb35ca897&q=" + toAdd +"&count=1";
-            Request request = new Request.Builder()
-                    .url(url)
-                    .build();
-            client.newCall(request).enqueue(new Callback() {
-                @Override
-                public void onFailure(Call call, IOException e) {
-                    e.printStackTrace();
-                }
-
-                @Override
-                public void onResponse(Call call, Response response) throws IOException {
-                    if(response.isSuccessful()) {
-                        final String myResponse = response.body().string();
-
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                System.out.println(myResponse);
-                            }
-                        });
                     }
                 }
-            });
+
+                System.out.println("Searching for...");
+                System.out.println(toAdd);
+
+
+                OkHttpClient client = new OkHttpClient();
+                String url = "https://www.food2fork.com/api/search?key=1e57f850de5ad1ed723a26fdb35ca897&q=" + toAdd + "&count=1";
+                Request request = new Request.Builder()
+                        .url(url)
+                        .build();
+                client.newCall(request).enqueue(new Callback() {
+                    @Override
+                    public void onFailure(Call call, IOException e) {
+                        e.printStackTrace();
+                    }
+
+                    @Override
+                    public void onResponse(Call call, Response response) throws IOException {
+                        if (response.isSuccessful()) {
+                            final String myResponse = response.body().string();
+
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    System.out.println(myResponse);
+                                }
+                            });
+                        }
+                    }
+                });
             }
         });
     }

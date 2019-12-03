@@ -1,4 +1,4 @@
-package com.mobilesoftware.pantryapp.ui.main;
+package com.mobilesoftware.pantryapp.ui.main.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,8 +9,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.mobilesoftware.pantryapp.database.Food;
 import com.mobilesoftware.pantryapp.R;
+import com.mobilesoftware.pantryapp.database.Food;
 
 import java.util.List;
 
@@ -19,18 +19,14 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     private List<Food> mData;
     private OnItemClickListener mListener;
 
-    public interface OnItemClickListener {
-        void onItemClick(int position);
-    }
-
-    public void setOnItemClickListener(OnItemClickListener listener){
-        mListener = listener;
-
-    }
-
     public RecyclerViewAdapter(Context mContext, List<Food> mData) {
         this.mContext = mContext;
         this.mData = mData;
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        mListener = listener;
+
     }
 
     @NonNull
@@ -53,14 +49,18 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         return mData.size();
     }
 
-    public void clear(){
+    public void clear() {
         mData.clear();
         notifyDataSetChanged();
     }
 
-    public  void updatelst(List<Food> mData){
+    public void updatelst(List<Food> mData) {
         this.mData = mData;
         notifyDataSetChanged();
+    }
+
+    public interface OnItemClickListener {
+        void onItemClick(int position);
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
@@ -72,17 +72,17 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         public MyViewHolder(View itemView, final OnItemClickListener listener) {
             super(itemView);
 
-            tv_name = (TextView) itemView.findViewById(R.id.nametv);
-            tv_count = (TextView) itemView.findViewById(R.id.counttv);
-            tv_unit = (TextView) itemView.findViewById(R.id.unittv);
+            tv_name = itemView.findViewById(R.id.nametv);
+            tv_count = itemView.findViewById(R.id.counttv);
+            tv_unit = itemView.findViewById(R.id.unittv);
 
-            itemView.setOnClickListener(new View.OnClickListener(){
+            itemView.setOnClickListener(new View.OnClickListener() {
 
                 @Override
                 public void onClick(View view) {
-                    if(listener != null){
+                    if (listener != null) {
                         int position = getAdapterPosition();
-                        if (position != RecyclerView.NO_POSITION){
+                        if (position != RecyclerView.NO_POSITION) {
                             listener.onItemClick(position);
                         }
                     }

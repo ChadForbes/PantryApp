@@ -1,12 +1,6 @@
-package com.mobilesoftware.pantryapp;
+package com.mobilesoftware.pantryapp.ui.main;
 
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +9,12 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+
+import com.mobilesoftware.pantryapp.R;
 import com.mobilesoftware.pantryapp.database.Food;
 import com.mobilesoftware.pantryapp.database.FoodRepository;
 
@@ -31,9 +31,8 @@ import okhttp3.Response;
 
 public class RecipeFragment extends Fragment {
 
-    private int numberOfCheckBoxes = 0;
-
     View v;
+    private int numberOfCheckBoxes = 0;
 
     public RecipeFragment() {
 
@@ -76,15 +75,14 @@ public class RecipeFragment extends Fragment {
         });
 
 
-
         mySearchButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
                 String toAdd = myEditText.getText().toString();
 
-                for (int i = 0; i < myAddToHere.getChildCount(); i++){
-                    CheckBox cb = (CheckBox)myAddToHere.getChildAt(i);
-                    if(cb.isChecked()) {
+                for (int i = 0; i < myAddToHere.getChildCount(); i++) {
+                    CheckBox cb = (CheckBox) myAddToHere.getChildAt(i);
+                    if (cb.isChecked()) {
                         toAdd += "," + cb.getText();
 
                     }
@@ -95,7 +93,7 @@ public class RecipeFragment extends Fragment {
 
 
                 OkHttpClient client = new OkHttpClient();
-                String url = "https://www.food2fork.com/api/search?key=1e57f850de5ad1ed723a26fdb35ca897&q=" + toAdd +"&count=1";
+                String url = "https://www.food2fork.com/api/search?key=1e57f850de5ad1ed723a26fdb35ca897&q=" + toAdd + "&count=1";
                 Request request = new Request.Builder()
                         .url(url)
                         .build();
@@ -107,7 +105,7 @@ public class RecipeFragment extends Fragment {
 
                     @Override
                     public void onResponse(Call call, Response response) throws IOException {
-                        if(response.isSuccessful()) {
+                        if (response.isSuccessful()) {
                             final String myResponse = response.body().string();
 
                             getActivity().runOnUiThread(new Runnable() {
@@ -122,7 +120,6 @@ public class RecipeFragment extends Fragment {
 
             }
         });
-
 
 
         return v;

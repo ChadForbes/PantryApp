@@ -7,8 +7,6 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
-import com.mobilesoftware.pantryapp.database.Food;
-
 import java.util.List;
 
 @Dao
@@ -36,7 +34,6 @@ public interface FoodDao {
 
     @Query("SELECT * FROM Food WHERE vegetable")
     LiveData<List<Food>> getVegetable();
-
 
 
     @Query("SELECT * FROM Food WHERE name LIKE :foodName AND shopping_list = :shoppingList")

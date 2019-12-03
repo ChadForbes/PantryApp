@@ -1,14 +1,9 @@
-package com.mobilesoftware.pantryapp.ui.main;
-
-import android.content.Context;
+package com.mobilesoftware.pantryapp.ui.main.adapters;
 
 import androidx.annotation.Nullable;
-import androidx.annotation.StringRes;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
-
-import com.mobilesoftware.pantryapp.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +15,7 @@ import java.util.List;
 public class ViewPagerAdapter extends FragmentPagerAdapter {
 
     private final List<Fragment> lstFragments = new ArrayList<>();
-    private final List<String>  lstTitle = new ArrayList<>();
+    private final List<String> lstTitle = new ArrayList<>();
 
     public ViewPagerAdapter(FragmentManager fm) {
         super(fm);
@@ -32,7 +27,7 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
         return lstTitle.get(position);
     }
 
-    public Fragment getItem(int position){
+    public Fragment getItem(int position) {
         return lstFragments.get(position);
     }
 
@@ -41,7 +36,7 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
         return lstTitle.size();
     }
 
-    public void AddFragment(Fragment fragment, String title){
+    public void AddFragment(Fragment fragment, String title) {
         lstFragments.add(fragment);
         lstTitle.add(title);
     }

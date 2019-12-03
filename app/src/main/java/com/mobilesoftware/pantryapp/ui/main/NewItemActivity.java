@@ -1,4 +1,4 @@
-package com.mobilesoftware.pantryapp;
+package com.mobilesoftware.pantryapp.ui.main;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,9 +13,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 
+import com.mobilesoftware.pantryapp.R;
 import com.mobilesoftware.pantryapp.database.Food;
 import com.mobilesoftware.pantryapp.database.FoodRepository;
-import com.mobilesoftware.pantryapp.ui.main.PantryActivity;
 
 
 public class NewItemActivity extends AppCompatActivity {
@@ -46,6 +46,9 @@ public class NewItemActivity extends AppCompatActivity {
 
         delbtn.setEnabled(false);
         delbtn.setVisibility(View.INVISIBLE);
+        shoppingList.setEnabled(false);
+        shoppingList.setVisibility(View.INVISIBLE);
+
 
         cancelbtn.setOnClickListener(new View.OnClickListener() {
 
@@ -58,7 +61,7 @@ public class NewItemActivity extends AppCompatActivity {
         });
 
         // receives message tell the activity if this is an edit or create new
-        createMode = getIntent().getExtras().getString("mode").equals("create");
+        createMode = getIntent().getExtras().getString("mode").equals("createpantry");
 
         if (!createMode) {
             createbtn.setText("Save");
@@ -162,7 +165,7 @@ public class NewItemActivity extends AppCompatActivity {
         }
     }
 
-    public void initViews(){
+    public void initViews() {
         titleTV = findViewById(R.id.titletv);
         nameET = findViewById(R.id.nameet);
         expirET = findViewById(R.id.expiryet);
@@ -181,8 +184,8 @@ public class NewItemActivity extends AppCompatActivity {
         shoppingList = findViewById(R.id.shoppingListButton);
     }
 
-    public void broadcast(Boolean update){
-        i.putExtra("update",update);
+    public void broadcast(Boolean update) {
+        i.putExtra("update", update);
         i.setAction("com.send.broadcast.OUTGOING BROADCAST");
         sendBroadcast(i);
     }

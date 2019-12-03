@@ -6,13 +6,11 @@ package com.mobilesoftware.pantryapp;
  * http://www.apache.org/licenses/LICENSE-2.0
  */
 
+import android.content.Context;
 import android.hardware.SensorListener;
 import android.hardware.SensorManager;
-import android.content.Context;
-import java.lang.UnsupportedOperationException;
 
-public class ShakeListener implements SensorListener
-{
+public class ShakeListener implements SensorListener {
     private static final int FORCE_THRESHOLD = 350;
     private static final int TIME_THRESHOLD = 100;
     private static final int SHAKE_TIMEOUT = 500;
@@ -20,7 +18,7 @@ public class ShakeListener implements SensorListener
     private static final int SHAKE_COUNT = 3;
 
     private SensorManager mSensorMgr;
-    private float mLastX=-1.0f, mLastY=-1.0f, mLastZ=-1.0f;
+    private float mLastX = -1.0f, mLastY = -1.0f, mLastZ = -1.0f;
     private long mLastTime;
     private OnShakeListener mShakeListener;
     private Context mContext;
@@ -28,24 +26,17 @@ public class ShakeListener implements SensorListener
     private long mLastShake;
     private long mLastForce;
 
-    public interface OnShakeListener
-    {
-        public void onShake();
-    }
-
-    public ShakeListener(Context context)
-    {
+    public ShakeListener(Context context) {
         mContext = context;
         resume();
     }
 
-    public void setOnShakeListener(OnShakeListener listener)
-    {
+    public void setOnShakeListener(OnShakeListener listener) {
         mShakeListener = listener;
     }
 
     public void resume() {
-        mSensorMgr = (SensorManager)mContext.getSystemService(Context.SENSOR_SERVICE);
+        mSensorMgr = (SensorManager) mContext.getSystemService(Context.SENSOR_SERVICE);
         if (mSensorMgr == null) {
             throw new UnsupportedOperationException("Sensors not supported");
         }
@@ -63,10 +54,10 @@ public class ShakeListener implements SensorListener
         }
     }
 
-    public void onAccuracyChanged(int sensor, int accuracy) { }
+    public void onAccuracyChanged(int sensor, int accuracy) {
+    }
 
-    public void onSensorChanged(int sensor, float[] values)
-    {
+    public void onSensorChanged(int sensor, float[] values) {
         if (sensor != SensorManager.SENSOR_ACCELEROMETER) return;
         long now = System.currentTimeMillis();
 
@@ -92,6 +83,10 @@ public class ShakeListener implements SensorListener
             mLastY = values[SensorManager.DATA_Y];
             mLastZ = values[SensorManager.DATA_Z];
         }
+    }
+
+    public interface OnShakeListener {
+        void onShake();
     }
 
 }
