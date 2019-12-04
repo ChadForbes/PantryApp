@@ -1,6 +1,8 @@
 package com.mobilesoftware.pantryapp.ui.main;
 
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +10,8 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.PopupWindow;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -76,7 +80,7 @@ public class RecipeFragment extends Fragment {
 
 
         mySearchButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
+            public void onClick(final View v) {
 
                 String toAdd = myEditText.getText().toString();
 
@@ -87,6 +91,7 @@ public class RecipeFragment extends Fragment {
 
                     }
                 }
+
 
                 System.out.println("Searching for...");
                 System.out.println(toAdd);
@@ -112,11 +117,17 @@ public class RecipeFragment extends Fragment {
                                 @Override
                                 public void run() {
                                     System.out.println(myResponse);
+
+
+
                                 }
                             });
                         }
                     }
                 });
+
+
+
 
             }
         });
@@ -135,4 +146,6 @@ public class RecipeFragment extends Fragment {
         numberOfCheckBoxes++;
 
     }
+
+
 }
