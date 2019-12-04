@@ -53,60 +53,49 @@
 
     </androidx.cardview.widget.CardView>
 
-    <TableLayout
-        android:id="@+id/layout"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/editText_search"
+            android:layout_width="326dp"
+            android:layout_height="match_parent"
+            android:inputType="textPersonName" />
+
+        <Button
+            android:id="@+id/button_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_span="0"
+            android:backgroundTint="@color/lowerheader_color"
+            android:text="Search"
+            android:textColor="@color/pantry_app_color" />
+    </LinearLayout>
+
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TableRow
+        <LinearLayout
+            android:id="@+id/linAddTo"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-            <EditText
-                android:id="@+id/editText_search"
-                android:layout_width="326dp"
+            <CheckBox
+                android:id="@+id/checkBox3"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:inputType="textPersonName" />
+                android:text="CheckBox" />
 
-            <Button
-                android:id="@+id/button_search"
-                android:backgroundTint="@color/lowerheader_color"
-                android:layout_height="wrap_content"
-                android:textColor="@color/pantry_app_color"
-                android:layout_span="0"
-                android:text="Search" />
+            <CheckBox
+                android:id="@+id/checkBox2"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="CheckBox" />
+        </LinearLayout>
+    </ScrollView>
 
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/myAddTo"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <ScrollView
-                android:layout_width="312dp"
-                android:layout_height="match_parent">
-
-                <LinearLayout
-                    android:id="@+id/linAddTo"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <CheckBox
-                        android:id="@+id/checkBox3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="CheckBox" />
-
-                    <CheckBox
-                        android:id="@+id/checkBox2"
-                        android:layout_width="157dp"
-                        android:layout_height="match_parent"
-                        android:text="CheckBox" />
-                </LinearLayout>
-            </ScrollView>
-        </TableRow>
-
-    </TableLayout>
 </LinearLayout>

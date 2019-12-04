@@ -50,13 +50,6 @@ public class PantryActivity extends AppCompatActivity {
         final Vibrator vibe = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
 
         rg = findViewById(R.id.rg);
-        mShaker = new ShakeListener(this);
-        mShaker.setOnShakeListener(new ShakeListener.OnShakeListener() {
-            public void onShake() {
-                vibe.vibrate(100);
-                startCreateActivity();
-            }
-        });
 
         editIntent = new Intent(getBaseContext(), NewItemActivity.class);
         foodList = new ArrayList<>();

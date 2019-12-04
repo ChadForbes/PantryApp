@@ -22,25 +22,27 @@
             android:id="@+id/nametv"
             android:layout_width="169dp"
             android:layout_height="match_parent"
+            android:layout_weight="0"
             android:text="TextView"
             android:textSize="20dp" />
 
         <TextView
             android:id="@+id/counttv"
-            android:layout_width="205dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="end"
+            android:layout_weight="12"
             android:text="0"
+            android:textAlignment="viewEnd"
             android:textSize="20dp" />
 
         <TextView
             android:id="@+id/unittv"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_gravity="end"
-            android:gravity="end"
+            android:layout_weight="0"
             android:maxLines="1"
             android:text="lb"
+            android:textAlignment="textEnd"
             android:textSize="20dp" />
     </LinearLayout>
 
