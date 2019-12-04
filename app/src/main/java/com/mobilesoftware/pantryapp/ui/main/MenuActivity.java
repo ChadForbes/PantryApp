@@ -27,7 +27,7 @@ public class MenuActivity extends AppCompatActivity {
     TabLayout tabLayout;
     ViewPager viewPager;
     ViewPagerAdapter adapter;
-    ShakeListener shakeListener;
+    private ShakeListener mShaker;
 
 
     @Override
@@ -35,8 +35,8 @@ public class MenuActivity extends AppCompatActivity {
         foodRepository = new FoodRepository(getApplicationContext());
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
-        shakeListener = new ShakeListener(this);
-        shakeListener.pause();
+        mShaker = new ShakeListener(this);
+        mShaker.pause();
     }
 
 

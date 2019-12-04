@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 
 import com.mobilesoftware.pantryapp.R;
+import com.mobilesoftware.pantryapp.ShakeListener;
 import com.mobilesoftware.pantryapp.database.Food;
 import com.mobilesoftware.pantryapp.database.FoodRepository;
 
@@ -31,6 +32,7 @@ public class NewItemActivity extends AppCompatActivity {
 
     private RadioButton fruitbtn, dairybtn, meatbtn, vegetablebtn, carbbtn;
     private Button cancelbtn, delbtn, createbtn;
+    private ShakeListener mShaker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +43,8 @@ public class NewItemActivity extends AppCompatActivity {
         final FoodRepository foodRepository = new FoodRepository(getApplicationContext());
 
         initViews();
-
+        mShaker = new ShakeListener(this);
+        mShaker.pause();
 
         i = new Intent();
 

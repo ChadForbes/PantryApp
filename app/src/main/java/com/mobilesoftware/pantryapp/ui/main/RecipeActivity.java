@@ -24,6 +24,7 @@ import androidx.lifecycle.Observer;
 
 import com.google.gson.JsonObject;
 import com.mobilesoftware.pantryapp.R;
+import com.mobilesoftware.pantryapp.ShakeListener;
 import com.mobilesoftware.pantryapp.database.Food;
 import com.mobilesoftware.pantryapp.database.FoodRepository;
 
@@ -45,6 +46,7 @@ import okhttp3.Response;
 public class RecipeActivity extends AppCompatActivity{
 
     private int numberOfCheckBoxes = 0;
+    private ShakeListener mShaker;
 
     Dialog myDialog;
 
@@ -58,6 +60,9 @@ public class RecipeActivity extends AppCompatActivity{
         final FoodRepository foodRepository;
         final List allSearchableFoods = new ArrayList();
         foodRepository = new FoodRepository(getBaseContext());
+
+        mShaker = new ShakeListener(this);
+        mShaker.pause();
 
         final LinearLayout myAddToHere = findViewById(R.id.linAddTo);
 
