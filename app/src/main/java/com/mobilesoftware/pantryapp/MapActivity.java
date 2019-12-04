@@ -40,6 +40,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     private FusedLocationProviderClient fusedLocationProviderClient;
     private boolean locationPermission = false;
     private Location curLoc;
+    ShakeListener shakeListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +48,8 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         setContentView(R.layout.activity_map);
 
         getLocationPermission();
+        shakeListener = new ShakeListener(this);
+        shakeListener.pause();
     }
 
     private void getLocationPermission() {

@@ -15,6 +15,7 @@ import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.material.tabs.TabLayout;
 import com.mobilesoftware.pantryapp.MapActivity;
 import com.mobilesoftware.pantryapp.R;
+import com.mobilesoftware.pantryapp.ShakeListener;
 import com.mobilesoftware.pantryapp.database.FoodRepository;
 import com.mobilesoftware.pantryapp.ui.main.adapters.ViewPagerAdapter;
 
@@ -26,12 +27,16 @@ public class MenuActivity extends AppCompatActivity {
     TabLayout tabLayout;
     ViewPager viewPager;
     ViewPagerAdapter adapter;
+    ShakeListener shakeListener;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         foodRepository = new FoodRepository(getApplicationContext());
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
+        shakeListener = new ShakeListener(this);
+        shakeListener.pause();
     }
 
 

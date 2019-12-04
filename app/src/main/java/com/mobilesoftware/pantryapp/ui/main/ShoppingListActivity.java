@@ -41,6 +41,7 @@ public class ShoppingListActivity extends AppCompatActivity {
     private TextView titletv;
     private RadioGroup rg;
     private String searchText;
+    ShakeListener shakeListener;
 
 
     @Override
@@ -52,20 +53,14 @@ public class ShoppingListActivity extends AppCompatActivity {
         titletv.setText("My Shopping List");
         final Vibrator vibe = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
 
-        mShaker = new ShakeListener(this);
-        mShaker.setOnShakeListener(new ShakeListener.OnShakeListener() {
-            public void onShake() {
-                vibe.vibrate(100);
-                startCreateActivity();
-            }
-        });
-
         editIntent = new Intent(getBaseContext(), NewItemActivity.class);
         foodList = new ArrayList<>();
 
         foodRepository = new FoodRepository(getBaseContext());
         initViews();
         generateItems();
+        shakeListener = new ShakeListener(this);
+        shakeListener.pause();
     }
 
     public void generateItems() {
