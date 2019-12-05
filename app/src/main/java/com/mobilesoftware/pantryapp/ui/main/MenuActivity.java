@@ -24,9 +24,6 @@ public class MenuActivity extends AppCompatActivity {
     private static final String TAG = "MenuActivity";
     private static final int ERROR_DIALOG_REQUEST = 9001;
     FoodRepository foodRepository;
-    TabLayout tabLayout;
-    ViewPager viewPager;
-    ViewPagerAdapter adapter;
     private ShakeListener mShaker;
 
 
