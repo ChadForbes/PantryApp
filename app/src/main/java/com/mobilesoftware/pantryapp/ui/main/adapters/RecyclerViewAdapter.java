@@ -41,7 +41,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         holder.tv_name.setText(mData.get(position).name);
         holder.tv_count.setText(Float.toString(mData.get(position).amount));
-        holder.tv_unit.setText(mData.get(position).amountType);
+        holder.tv_unit.setText(" "+mData.get(position).amountType);
     }
 
     @Override

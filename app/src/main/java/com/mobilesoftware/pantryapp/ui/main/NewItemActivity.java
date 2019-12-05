@@ -83,6 +83,8 @@ public class NewItemActivity extends AppCompatActivity {
             titleTV.setText("Edit Item");
             delbtn.setEnabled(true);
             delbtn.setVisibility(View.VISIBLE);
+            shoppingList.setEnabled(true);
+            shoppingList.setVisibility(View.VISIBLE);
             foodRepository.getFood(id).observe(this, new Observer<Food>() {
                 @Override
                 public void onChanged(@NonNull final Food foods) {
@@ -149,7 +151,7 @@ public class NewItemActivity extends AppCompatActivity {
                     food.amountType = unitET.getText().toString();
                     food.aliases = aliasET.getText().toString();
                     food.searchable = addsearch.isChecked();
-                    food.shoppingList = shoppingList.isChecked();
+                    food.shoppingList = false;
                     food.fruit = fruitbtn.isChecked();
                     food.meat = meatbtn.isChecked();
                     food.vegetable = vegetablebtn.isChecked();
@@ -165,6 +167,9 @@ public class NewItemActivity extends AppCompatActivity {
                 titleTV.setText("Edit Item");
                 delbtn.setEnabled(true);
                 delbtn.setVisibility(View.VISIBLE);
+                shoppingList.setText("Remove from Shopping List");
+                shoppingList.setEnabled(true);
+                shoppingList.setVisibility(View.VISIBLE);
                 foodRepository.getFood(id).observe(this, new Observer<Food>() {
                     @Override
                     public void onChanged(@NonNull final Food foods) {
@@ -175,7 +180,7 @@ public class NewItemActivity extends AppCompatActivity {
                             unitET.setText(foods.amountType);
                             aliasET.setText(foods.aliases);
                             addsearch.setChecked(foods.searchable);
-                            shoppingList.setChecked(foods.shoppingList);
+                            shoppingList.setChecked(false);
                             fruitbtn.setChecked(foods.fruit);
                             meatbtn.setChecked(foods.meat);
                             vegetablebtn.setChecked(foods.vegetable);
@@ -205,7 +210,9 @@ public class NewItemActivity extends AppCompatActivity {
                         food.amountType = unitET.getText().toString();
                         food.aliases = aliasET.getText().toString();
                         food.searchable = addsearch.isChecked();
-                        food.shoppingList = true;
+                        if (food.shoppingList){
+                        food.shoppingList = false;
+                        }
                         food.fruit = fruitbtn.isChecked();
                         food.meat = meatbtn.isChecked();
                         food.vegetable = vegetablebtn.isChecked();
